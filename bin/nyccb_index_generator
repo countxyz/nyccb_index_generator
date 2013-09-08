@@ -1,3 +1,10 @@
 #!/usr/bin/env ruby
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+
+require 'nyccb_index_generator/json_assembler'
+
+assembler = NyccbIndexGenerator::JsonAssembler.new
+ARGV.each do |csv_file|
+  assembler.get_csv_data(csv_file)
+end
