@@ -3,6 +3,8 @@
 require 'csv'
 require 'json'
 
+require_relative 'section'
+
 module NyccbIndexGenerator
 
   class JsonAssembler
@@ -17,6 +19,10 @@ module NyccbIndexGenerator
       CSV.foreach(csv_file, headers: true) do |row|
         @section_parts << Section.new(row["heading_identifier"], row["catch_text"])
       end
+    end
+
+    def build_json
+      p JSON.pretty_generate(@section_parts)
     end
   end
 end

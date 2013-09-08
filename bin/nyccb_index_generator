@@ -8,3 +8,5 @@ assembler = NyccbIndexGenerator::JsonAssembler.new
 ARGV.each do |csv_file|
   assembler.get_csv_data(csv_file)
 end
+
+assembler.build_json

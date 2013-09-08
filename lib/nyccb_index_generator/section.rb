@@ -9,5 +9,6 @@ module NyccbIndexGenerator
     def initialize(heading_identifier, catch_text)
       @heading_identifier = heading_identifier
       @catch_text         = catch_text
+    end
   end
 end
