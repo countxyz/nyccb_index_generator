@@ -3,8 +3,6 @@
 require 'csv'
 require 'json'
 
-require_relative 'section'
-
 module NyccbIndexGenerator
 
   class JsonAssembler
