@@ -9,20 +9,30 @@ module NyccbIndexGenerator
 
   class JsonAssembler
 
-    attr_reader :section_parts
+    attr_reader :section_parts, :pretty_json
 
     def initialize
-      @section_parts = []
+      @section_parts  = []
+      @pretty_json    = pretty_json
     end
 
     def get_csv_data(csv_file)
       CSV.foreach(csv_file, headers: true) do |row|
-        @section_parts << Section.new(row["heading_identifier"], row["catch_text"])
+        row_array = [row["heading_identifier"], row["catch_text"]]
+        @section_parts << row_array
       end
     end
 
     def build_json
-      p JSON.pretty_generate(@section_parts)
+      @section_parts.each do |section|
+        @pretty_json = JSON.pretty_generate(@section_parts)
+      end
+    end
+
+    def json_to_file
+      File.open("index.json", "w") do |file|
+        file.print @pretty_json
+      end
     end
   end
 end

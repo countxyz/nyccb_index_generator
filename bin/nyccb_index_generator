@@ -10,3 +10,4 @@ ARGV.each do |csv_file|
 end
 
 assembler.build_json
+assembler.json_to_file
